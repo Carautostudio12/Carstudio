@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CarStudio</title>
+
+<style>
+body{
+background:black;
+font-family:Arial;
+margin:0;
+padding:20px;
+}
+
+.container{
+max-width:420px;
+margin:auto;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.3);
+}
+
+.logo{
+text-align:center;
+font-size:32px;
+font-weight:bold;
+background:linear-gradient(135deg,#C9A24A,#E5C878);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.sub{
+text-align:center;
+color:#C9A24A;
+margin-bottom:20px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:8px 0;
+border-radius:12px;
+border:1px solid #ddd;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:14px;
+background:linear-gradient(135deg,#C9A24A,#E5C878);
+font-weight:bold;
+}
+
+.invoice{
+display:none;
+margin-top:20px;
+}
+
+.line{
+border-top:1px solid #ccc;
+margin:10px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+<div class="logo">CARSTUDIO</div>
+<div class="sub">Auto Electronics & Installation</div>
+
+<input id="name" placeholder="Customer Name">
+<input id="phone" placeholder="Phone">
+<input id="vehicle" placeholder="Vehicle">
+<input id="plate" placeholder="Plate">
+<input id="service" placeholder="Service">
+<input id="amount" placeholder="Amount">
+
+<button onclick="generate()">GENERATE INVOICE</button>
+</div>
+
+<div class="card invoice" id="invoice">
+<div class="logo">CARSTUDIO</div>
+
+<p><b>Date:</b> <span id="date"></span></p>
+<div class="line"></div>
+
+<p><b>Customer:</b> <span id="c1"></span></p>
+<p><b>Phone:</b> <span id="c2"></span></p>
+<p><b>Vehicle:</b> <span id="c3"></span></p>
+<p><b>Plate:</b> <span id="c4"></span></p>
+
+<div class="line"></div>
+
+<p><b>Service:</b></p>
+<p id="c5"></p>
+
+<p><b>TOTAL: $</b><span id="c6"></span></p>
+
+<button onclick="window.print()">PRINT</button>
+</div>
+
+</div>
+
+<script>
+function generate(){
+document.getElementById("invoice").style.display="block";
+
+document.getElementById("c1").innerText = document.getElementById("name").value;
+document.getElementById("c2").innerText = document.getElementById("phone").value;
+document.getElementById("c3").innerText = document.getElementById("vehicle").value;
+document.getElementById("c4").innerText = document.getElementById("plate").value;
+document.getElementById("c5").innerText = document.getElementById("service").value;
+document.getElementById("c6").innerText = document.getElementById("amount").value;
+
+document.getElementById("date").innerText = new Date().toLocaleString();
+}
+</script>
+
+</body>
+</html>
