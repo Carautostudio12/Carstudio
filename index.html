@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CARSTUDIO</title>
+
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Carautostudio12/Carstudio/main/87797464-6E85-4B64-AEB8-8B8EAF8FFE2.png">
+
+<style>
+body{margin:0;font-family:-apple-system;background:#0B0B0B;color:white}
+.container{max-width:480px;margin:auto;padding:20px}
+.card{background:white;color:black;border-radius:20px;padding:25px;box-shadow:0 20px 40px rgba(0,0,0,.2)}
+.logo{width:140px;margin-bottom:10px}
+input{width:100%;padding:14px;margin:8px 0;border-radius:12px;border:1px solid #ddd;font-size:15px}
+button{width:100%;padding:15px;margin-top:10px;border:none;border-radius:14px;font-weight:bold;font-size:16px}
+.gold{background:linear-gradient(135deg,#C9A24A,#E5C878)}
+.green{background:#25D366;color:white}
+.dark{background:#222;color:white}
+hr{border:0;border-top:1px solid #eee;margin:15px 0}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- FORM -->
+<div class="card" id="formBox" style="text-align:center;">
+<img src="https://raw.githubusercontent.com/Carautostudio12/Carstudio/main/87797464-6E85-4B64-AEB8-8B8EAF8FFE2.png" class="logo">
+
+<h2>CARSTUDIO</h2>
+<p style="color:#C9A24A;">Auto Electronics & Installation</p>
+
+<input id="name" placeholder="Customer Name">
+<input id="phone" placeholder="Phone">
+<input id="vehicle" placeholder="Vehicle">
+<input id="plate" placeholder="Plate">
+<input id="service" placeholder="Service">
+<input id="amount" placeholder="Amount">
+
+<button class="gold" onclick="generate()">GENERATE INVOICE</button>
+</div>
+
+<!-- INVOICE -->
+<div class="card" id="invoiceBox" style="display:none;margin-top:20px;">
+
+<div style="text-align:center;">
+<img src="https://raw.githubusercontent.com/Carautostudio12/Carstudio/main/87797464-6E85-4B64-AEB8-8B8EAF8FFE2.png" class="logo">
+<h2>CARSTUDIO</h2>
+<p>20 Prescott St, Jersey City</p>
+<p>201-658-7295</p>
+</div>
+
+<hr>
+
+<p><b>Customer:</b> <span id="cName"></span></p>
+<p><b>Phone:</b> <span id="cPhone"></span></p>
+<p><b>Vehicle:</b> <span id="cVehicle"></span></p>
+<p><b>Plate:</b> <span id="cPlate"></span></p>
+
+<hr>
+
+<p><b>Service:</b></p>
+<p id="cService"></p>
+
+<h2 id="total"></h2>
+
+<hr>
+
+<button class="gold" onclick="window.print()">PRINT</button>
+<button class="green" onclick="sendWA()">WHATSAPP</button>
+<button class="dark" onclick="location.reload()">NEW</button>
+
+</div>
+
+</div>
+
+<script>
+function generate(){
+document.getElementById("formBox").style.display="none";
+document.getElementById("invoiceBox").style.display="block";
+
+document.getElementById("cName").innerText = document.getElementById("name").value;
+document.getElementById("cPhone").innerText = document.getElementById("phone").value;
+document.getElementById("cVehicle").innerText = document.getElementById("vehicle").value;
+document.getElementById("cPlate").innerText = document.getElementById("plate").value;
+document.getElementById("cService").innerText = document.getElementById("service").value;
+
+document.getElementById("total").innerText = "TOTAL: $" + document.getElementById("amount").value;
+}
+
+function sendWA(){
+let msg = "CARSTUDIO\nCustomer: " + document.getElementById("name").value +
+"\nVehicle: " + document.getElementById("vehicle").value +
+"\nService: " + document.getElementById("service").value +
+"\nTotal: $" + document.getElementById("amount").value;
+
+window.open("https://wa.me/1" + document.getElementById("phone").value + "?text=" + encodeURIComponent(msg));
+}
+</script>
+
+</body>
+</html>
